@@ -11,6 +11,7 @@
   <dependencies>
     <dependency></dependency>
   </dependencies>
+  <note type="install">Make sure you have done all the changes needed before installing</note>
   <hooks>
     <hook id="vt_row_userbar_bottom"><![CDATA[
 	// Include a file from the extension directory

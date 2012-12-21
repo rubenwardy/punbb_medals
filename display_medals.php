@@ -1,26 +1,21 @@
 <?php
-$medal_id=$cur_post['poster_id'];
 
-if (is_numeric($medal_id)==false)
-  return;
+require "medal_types.php";
 
-echo "<li>Medals<br>";
-echo "SELECT * FROM punbb_users WHERE id=".$medal_id;
+echo "<li style=\"margin-top:10px;\">\n";
 
-if (!$forum_db)
-  return;
+$medals_i=$cur_post['medals'];
 
-$medal_res = $forum_db->query("SELECT * FROM punbb_users WHERE id=".$medal_id) or die("query error");
+$medals=explode(",",$medals_i);
 
-if (!$medal_res)
-  return;
+while (list($key,$val)=each($medals)){
+  $med_img="q";
 
-$medal_h = mysql_fetch_array($medal_res);
+  if (isset($medal_types[strtolower($val)]))
+     $med_img=$medal_types[strtolower($val)];
 
-if (!$medal_h)
-  return;
-     
-echo ": '".$medal_h['medals']."'";
+ echo "<img src=\"img/medal_$med_img.png\" title=\"$val\">\n";
+}
 
-echo "</li>";
+echo "</li>\n";
 ?>
