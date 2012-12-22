@@ -3,7 +3,7 @@ Punbb Medals Extension
 
 This project adds user medals to punbb.
 
-You can see a screenshot here: http://multa.bugs3.com/upload/punbb_medals.png
+![Screenshot of a post](http://multa.bugs3.com/upload/punbb_medals.png)
 
 Setting Up
 ==========
