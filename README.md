@@ -36,7 +36,10 @@ Go to line 562 in viewtopic.php, look for a paragraph like this:
     </ul>
 
 add
+
     <?php($hook = get_hook('vt_row_userbar_bottom')) ? eval($hook) : null;?>
+    
 before
+
     </ul>
 
