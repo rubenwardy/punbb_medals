@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
+
 <extension engine="1.0">
   <id>punbb_medals</id>
   <title>Medals</title>
@@ -8,14 +8,34 @@
   <author>Andrew Ward</author>
   <minversion>1.3</minversion>
   <maxtestedon>1.5</maxtestedon>
-  <dependencies>
-    <dependency></dependency>
-  </dependencies>
   <note type="install">Make sure you have done all the changes needed before installing</note>
+  <install><![CDATA[
+    // Installation code
+    require $ext_info['path'].'/install.php';
+  ]]></install>
   <hooks>
-    <hook id="vt_row_userbar_bottom"><![CDATA[
+    <hook id="vt_row_pre_display"><![CDATA[
 	// Include a file from the extension directory
 	require $ext_info['path'].'/display_medals.php';
     ]]></hook>
+    <hook id="aex_section_manage_pre_ext_actions"><![CDATA[
+	// run it
+    if ($ext['title'] == "Medals"){
+        $forum_page['ext_actions']['manage'] = "<span><a href=\"\">Manage</a></span>";
+    }
+    ]]></hook>
+      <hook id="aop_new_section"><![CDATA[
+	// Include a file from the extension directory
+	require $ext_info['path'].'/medal_def.php';
+    ]]></hook>
+      <hook id="ca_fn_generate_admin_menu_new_link"><![CDATA[
+			$medals_menu_element = '<li class="'.((FORUM_PAGE_SECTION == 'punbb_medals') ? 'active' : 'normal').
+					((empty($forum_page['admin_menu'])) ? ' first-item' : '').'">
+					<a href="'.FORUM_ROOT.'extensions/punbb_medals/admin.php">
+						<span>Medals</span>
+					</a></li>';
+
+			array_insert($forum_page['admin_menu'], 'extensions_manage', $medals_menu_element, 'punbb_medals');
+		]]></hook>
   </hooks>
 </extension>

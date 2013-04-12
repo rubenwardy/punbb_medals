@@ -1,30 +1,14 @@
 <?php
+require_once "functions.php";
 
-require_once "medal_types.php";
+// Start printing
+$user_id=$cur_post['poster_id'];
 
-echo "<li style=\"margin-top:10px;\">\n";
+$tmp_medals = "";
 
-$medals_i=$cur_post['medals'];
+getUserMedals($user_id,function($hash){
+	global $tmp_medals;
+	$tmp_medals .= printMedal($hash['mID']);
+});
 
-$medals=explode(",",$medals_i);
-
-while (list($key,$val)=each($medals)){
-  if ($val!=""){
-  $med_img="medal_q.png";
-  $med_titl=$val;
-
-  if (isset($medal_types[strtolower($val)]['name']))
-     $med_titl=$medal_types[strtolower($val)]['name'];
-
-  if (isset($medal_types[strtolower($val)]['image']))
-     $med_img=$medal_types[strtolower($val)]['image'];
-
-  if (isset($medal_types[strtolower($val)]['description']))
-     $med_titl.=" - ".$medal_types[strtolower($val)]['description'];
-
- echo "<img src=\"img/$med_img\" title=\"$med_titl\">\n";
-  }
-}
-
-echo "</li>\n";
-?>
+$forum_page['author_info']['medals'] = $tmp_medals;

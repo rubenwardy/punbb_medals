@@ -7,11 +7,6 @@
 
 
         // Mods
-  	"first mod" => array(
-  	       "name" => "First Mod",
-               "image" => "medal_bronze.png",
-               "description" => "has made a mod",
-        ),
         "mod pioneer" => array(
   	       "name" => "Mod Pioneer",
                "image" => "medal_inno.png",
