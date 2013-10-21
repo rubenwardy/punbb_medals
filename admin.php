@@ -73,6 +73,7 @@ ob_start();
 </div>
 <div class="main-content main-frm">
 	<div class="content-head">
+	<div class="content-head">
 		<h2 class="hn"><span>Add a medal definition</span></h2>
 	</div>
 	<fieldset class="frm-group group1">

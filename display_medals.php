@@ -12,3 +12,6 @@ getUserMedals($user_id,function($hash){
 });
 
 $forum_page['author_info']['medals'] = $tmp_medals;
+
+if ($forum_user['g_id'] == FORUM_ADMIN)
+	$forum_page['author_info']['medal_admin'] = "<p><a href=\"".FORUM_ROOT."extensions/punbb_medals/user.php?user={$cur_post['poster_id']}\">Manage Medals</a></p>";
